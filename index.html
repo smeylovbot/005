@@ -102,9 +102,9 @@
         </div>
         <div class="offcanvas-body p-0">
             <div class="p-3 bg-light border-bottom text-center">
-                <img src="https://ui-avatars.com/api/?name=SmeyLovbot&background=0d6efd&color=fff" class="rounded-circle mb-2" width="55">
-                <h6 class="mb-0 fw-bold">User: SmeyLovbot</h6>
-                <span class="text-success small fw-bold">Balance: $0.002093</span>
+                <img src="https://ui-avatars.com/api/?name=Guest&background=0d6efd&color=fff" class="rounded-circle mb-2" width="55">
+                <h6 class="mb-0 fw-bold">User: Guest</h6>
+                <span class="text-danger small fw-bold">Balance: $<span id="userBalanceDisplay">0.00</span></span>
             </div>
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action active py-3" data-bs-dismiss="offcanvas"><i class="fa-solid fa-cart-plus me-2"></i> New order</a>
@@ -120,12 +120,12 @@
         <div class="text-center mb-3">
             <small class="text-muted">Welcome to SmeyLovbot SMM 🚀</small>
             <div class="bg-white p-2 rounded shadow-sm border mt-1 small">
-                <span>Panel Orders: <b>3949650</b></span> | 
-                <span>My Orders: <b>93</b></span> | 
-                <span>Total Spend: <b>$23.94</b></span>
+                <span>Panel Orders: <b>105</b></span> | 
+                <span>My Orders: <b>0</b></span> | 
+                <span>Total Spend: <b>$0.00</b></span>
             </div>
             <div class="mt-1 text-primary fw-bold small">
-                Welcome SmeyLovbot Your Balance is : <span class="text-success">$0.002093</span>
+                Your Balance is : <span class="text-danger">$<span id="userBalanceMain">0.00</span></span>
             </div>
         </div>
 
@@ -190,7 +190,7 @@
                 <i class="fa-solid fa-qrcode me-2"></i> បង់ប្រាក់តាម ABA PayWay ឥឡូវនេះ
             </a>
             <div class="alert alert-warning small mb-0 text-start">
-                ⚠️ បន្ទាប់ពីបង់ប្រាក់រួច ប្រព័ន្ធនឹងបញ្ចូលសមតុល្យចូលគណនី SmeyLovbot របស់អ្នកដោយស្វ័យប្រវត្តិ។
+                ⚠️ ភ្ញៀវថ្មីចាំបាច់ត្រូវបញ្ចូលទឹកប្រាក់សិន ទើបអាចបញ្ជាទិញសេវាកម្មបាន។
             </div>
         </div>
 
@@ -203,6 +203,11 @@
 
     <!-- JavaScript -->
     <script>
+        // កំណត់ទឹកប្រាក់ក្នុងកាបូបរបស់ភ្ញៀវថ្មី (เริ่มต้น $0.00)
+        let userBalance = 0.00;
+        document.getElementById('userBalanceDisplay').textContent = userBalance.toFixed(2);
+        document.getElementById('userBalanceMain').textContent = userBalance.toFixed(2);
+
         let servicesData = JSON.parse(localStorage.getItem('smey_services')) || [];
 
         function initServices() {
@@ -235,6 +240,7 @@
             });
         });
 
+        let currentCharge = 0;
         document.getElementById('serviceSelect').addEventListener('change', function() {
             let opt = this.options[this.selectedIndex];
             if(opt.value) {
@@ -250,10 +256,21 @@
             let opt = sSelect.options[sSelect.selectedIndex];
             let qty = document.getElementById('quantityInput').value;
             if(opt && opt.dataset.rate && qty) {
-                let total = (parseFloat(opt.dataset.rate) * qty) / 1000;
-                document.getElementById('chargeOutput').value = '$' + total.toFixed(4);
+                currentCharge = (parseFloat(opt.dataset.rate) * qty) / 1000;
+                document.getElementById('chargeOutput').value = '$' + currentCharge.toFixed(4);
             }
         }
+
+        // មុខងារពេលភ្ញៀវចុច Submit ទិញសេវាកម្ម
+        document.getElementById('smmOrderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (userBalance < currentCharge) {
+                alert("❌ សូមអភ័យទោស! ទឹកប្រាក់ក្នុងគណនីរបស់អ្នកមាន $ " + userBalance.toFixed(2) + " មិនគ្រប់គ្រាន់ដើម្បីទិញសេវាកម្មនេះទេ ($ " + currentCharge.toFixed(4) + ")។ សូមអូសចុះក្រោមដើម្បីបញ្ចូលទឹកប្រាក់តាម ABA PayWay ជាមុនសិន!");
+                window.location.href = "#addFundsSection";
+            } else {
+                alert("✅ បានបញ្ជាទិញជោគជ័យ!");
+            }
+        });
 
         initServices();
     </script>
