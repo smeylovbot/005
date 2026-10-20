@@ -90,7 +90,7 @@
         </div>
         <div class="d-flex align-items:center">
             <a href="https://youtube.com" target="_blank" class="top-btn"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#addFundsSection" class="top-btn"><i class="fa-solid fa-coins"></i></a>
+            <button class="top-btn" data-bs-toggle="modal" data-bs-target="#addFundsModal"><i class="fa-solid fa-coins"></i></button>
             <a href="#" class="top-btn" onclick="alert('Support: Telegram @SmeyLovbot')"><i class="fa-solid fa-headset"></i></a>
             <a href="#" class="top-btn" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu"><i class="fa-solid fa-user"></i></a>
         </div>
@@ -109,12 +109,12 @@
                 <span class="text-success small fw-bold">Balance: $0.002093</span>
             </div>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action active py-3"><i class="fa-solid fa-cart-plus me-2"></i> New order</a>
-                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-list-check me-2"></i> My Orders</a>
-                <a href="#addFundsSection" class="list-group-item list-group-item-action py-3" data-bs-dismiss="offcanvas"><i class="fa-solid fa-wallet me-2"></i> Add funds (ABA PayWay)</a>
-                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-table-list me-2"></i> Services</a>
-                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-ticket me-2"></i> Tickets <span class="badge bg-warning text-dark float-end">1</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-boxes-stacked me-2"></i> Mass order</a>
+                <a href="#" class="list-group-item list-group-item-action active py-3" data-bs-dismiss="offcanvas"><i class="fa-solid fa-cart-plus me-2"></i> New order</a>
+                <a href="#" class="list-group-item list-group-item-action py-3" data-bs-dismiss="offcanvas"><i class="fa-solid fa-list-check me-2"></i> My Orders</a>
+                <a href="#" class="list-group-item list-group-item-action py-3" data-bs-dismiss="offcanvas" data-bs-toggle="modal" data-bs-target="#addFundsModal"><i class="fa-solid fa-wallet me-2"></i> Add funds (ABA PayWay)</a>
+                <a href="#" class="list-group-item list-group-item-action py-3" data-bs-dismiss="offcanvas"><i class="fa-solid fa-table-list me-2"></i> Services</a>
+                <a href="#" class="list-group-item list-group-item-action py-3" data-bs-dismiss="offcanvas"><i class="fa-solid fa-ticket me-2"></i> Tickets <span class="badge bg-warning text-dark float-end">1</span></a>
+                <a href="#" class="list-group-item list-group-item-action py-3" data-bs-dismiss="offcanvas"><i class="fa-solid fa-boxes-stacked me-2"></i> Mass order</a>
             </div>
         </div>
     </div>
@@ -198,21 +198,27 @@
             </form>
         </div>
 
-        <!-- Add Funds Section (ABA PayWay Integration) -->
-        <div class="panel-card" id="addFundsSection">
-            <h5 class="text-success fw-bold mb-3"><i class="fa-solid fa-wallet"></i> បញ្ចូលទឹកប្រាក់ (Add Funds via ABA PayWay)</h5>
-            <p class="text-muted small">ស្កេន ឬចុចប៊ូតុងខាងក្រោមដើម្បីទូទាត់ប្រាក់ស្វ័យប្រវត្តិតាមរយៈ ABA PayWay របស់អ្នក៖</p>
-            
-            <div class="text-center my-3">
-                <a href="https://link.payway.com.kh/ABAPAYuN526009h" target="_blank" class="btn btn-primary btn-lg w-100 py-3 fw-bold shadow-sm" style="background-color: #0080ff;">
-                    <i class="fa-solid fa-qrcode me-2"></i> បង់ប្រាក់តាម ABA PayWay ឥឡូវនេះ
-                </a>
-            </div>
-            <div class="alert alert-warning small mb-0">
-                ⚠️ បន្ទាប់ពីបង់ប្រាក់រួច ប្រព័ន្ធនឹងបញ្ចូលសមតុល្យចូលគណនី SmeyLovbot របស់អ្នកដោយស្វ័យប្រវត្តិ។
+    </div>
+
+    <!-- Add Funds Modal -->
+    <div class="modal fade" id="addFundsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-success fw-bold"><i class="fa-solid fa-wallet"></i> បញ្ចូលទឹកប្រាក់ (Add Funds via ABA PayWay)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="text-muted small">ស្កេន ឬចុចប៊ូតុងខាងក្រោមដើម្បីទូទាត់ប្រាក់ស្វ័យប្រវត្តិតាមរយៈ ABA PayWay របស់អ្នក៖</p>
+                    <a href="https://link.payway.com.kh/ABAPAYuN526009h" target="_blank" class="btn btn-primary btn-lg w-100 py-3 fw-bold shadow-sm mb-3" style="background-color: #0080ff;">
+                        <i class="fa-solid fa-qrcode me-2"></i> បង់ប្រាក់តាម ABA PayWay ឥឡូវនេះ
+                    </a>
+                    <div class="alert alert-warning small mb-0 text-start">
+                        ⚠️ បន្ទាប់ពីបង់ប្រាក់រួច ប្រព័ន្ធនឹងបញ្ចូលសមតុល្យចូលគណនី SmeyLovbot របស់អ្នកដោយស្វ័យប្រវត្តិ។
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 
     <!-- Floating Chat Support -->
@@ -220,24 +226,15 @@
         <i class="fa-solid fa-headset"></i>
     </div>
 
-    <!-- JavaScript to Fetch Services API -->
+    <!-- JavaScript to Fetch Services via PHP Backend -->
     <script>
         let servicesData = [];
-        const apiKey = "c25e94d3af8c3be1ead33e2865929005";
-        const apiUrl = "https://khmer-smm.com/api/v2";
 
         async function loadServices() {
             try {
-                let formData = new URLSearchParams();
-                formData.append('key', apiKey);
-                formData.append('action', 'services');
-
-                let res = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(apiUrl), {
-                    method: 'POST',
-                    body: formData
-                });
-                
+                let res = await fetch('get_services.php');
                 let data = await res.json();
+                
                 if(Array.isArray(data)) {
                     servicesData = data;
                     let categories = [...new Set(data.map(s => s.category))];
