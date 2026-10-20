@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmeyLovbot - SMM Panel Cambodia</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding-top: 55px;
+        }
+        /* Top Navbar */
+        .navbar-custom {
+            background-color: #0d6efd;
+            height: 55px;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1030;
+        }
+        .top-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+        .top-btn:hover { background: rgba(255, 255, 255, 0.3); color: white; }
+
+        /* Main Container Card */
+        .panel-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Platform Grid Buttons */
+        .platform-box {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .platform-box:hover {
+            border-color: #0d6efd;
+            background-color: #f8fbff;
+            color: #0d6efd;
+        }
+
+        /* Floating Support Chat */
+        .chat-float {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            background: #0d6efd;
+            color: white;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1050;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-custom px-3 d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items:center gap-2">
+            <button class="top-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <span class="text-white fw-bold fs-5">SmeyLovbot</span>
+        </div>
+        <div class="d-flex align-items:center">
+            <a href="https://youtube.com" target="_blank" class="top-btn"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#addFundsSection" class="top-btn"><i class="fa-solid fa-coins"></i></a>
+            <a href="#" class="top-btn" onclick="alert('Telegram Support: @SmeyLovbot')"><i class="fa-solid fa-headset"></i></a>
+            <a href="#" class="top-btn" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </nav>
+
+    <!-- Sidebar Menu (Offcanvas) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu">
+        <div class="offcanvas-header bg-primary text-white">
+            <h5 class="offcanvas-title fw-bold"><i class="fa-solid fa-robot"></i> SmeyLovbot SMM</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="p-3 bg-light border-bottom text-center">
+                <img src="https://ui-avatars.com/api/?name=SmeyLovbot&background=0d6efd&color=fff" class="rounded-circle mb-2" width="55">
+                <h6 class="mb-0 fw-bold">User: SmeyLovbot</h6>
+                <span class="text-success small fw-bold">Balance: $0.002093</span>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action active py-3"><i class="fa-solid fa-cart-plus me-2"></i> New order</a>
+                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-list-check me-2"></i> My Orders</a>
+                <a href="#addFundsSection" class="list-group-item list-group-item-action py-3" data-bs-dismiss="offcanvas"><i class="fa-solid fa-wallet me-2"></i> Add funds (ABA PayWay)</a>
+                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-table-list me-2"></i> Services</a>
+                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-ticket me-2"></i> Tickets <span class="badge bg-warning text-dark float-end">1</span></a>
+                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-boxes-stacked me-2"></i> Mass order</a>
+                <a href="#" class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-code me-2"></i> API</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container my-3" style="max-width: 650px;">
+        
+        <!-- User Stats Header -->
+        <div class="text-center mb-3">
+            <small class="text-muted">Welcome to SmeyLovbot SMM 🚀</small>
+            <div class="bg-white p-2 rounded shadow-sm border mt-1 small">
+                <span>Panel Orders: <b>3949650</b></span> | 
+                <span>My Orders: <b>93</b></span> | 
+                <span>Total Spend: <b>$23.94</b></span>
+            </div>
+            <div class="mt-1 text-primary fw-bold small">
+                Welcome ngna8947 Your Balance is : <span class="text-success">$0.002093</span>
+            </div>
+        </div>
+
+        <!-- Platform Quick Filter Buttons -->
+        <div class="row g-2 mb-3">
+            <div class="col-6"><a href="#" class="platform-box"><i class="fa-solid fa-list text-primary"></i> Everything</a></div>
+            <div class="col-6"><a href="#" class="platform-box"><i class="fa-brands fa-tiktok text-dark"></i> TikTok</a></div>
+            <div class="col-6"><a href="#" class="platform-box"><i class="fa-brands fa-facebook text-primary"></i> Facebook</a></div>
+            <div class="col-6"><a href="#" class="platform-box"><i class="fa-solid fa-video text-danger"></i> Facebook Live</a></div>
+            <div class="col-6"><a href="#" class="platform-box"><i class="fa-brands fa-youtube text-danger"></i> YouTube</a></div>
+            <div class="col-6"><a href="#" class="platform-box"><i class="fa-brands fa-telegram text-info"></i> Telegram</a></div>
+        </div>
+
+        <!-- Order Type Selector Tabs -->
+        <div class="d-flex gap-2 mb-3">
+            <button class="btn btn-primary flex-fill fw-bold"><i class="fa-solid fa-cart-plus"></i> New Order</button>
+            <button class="btn btn-outline-primary flex-fill fw-bold"><i class="fa-solid fa-layer-group"></i> Mass order</button>
+        </div>
+
+        <!-- New Order Form Card -->
+        <div class="panel-card">
+            <form id="smmOrderForm">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Search Service:</label>
+                    <input type="text" id="searchKeyword" class="form-control" placeholder="Search...">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Category:</label>
+                    <select id="categorySelect" class="form-select">
+                        <option value="">-- Select Category --</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Service:</label>
+                    <select id="serviceSelect" class="form-select" required>
+                        <option value="">-- Select Service --</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Link:</label>
+                    <input type="url" id="linkInput" class="form-control" placeholder="https://..." required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Quantity:</label>
+                    <input type="number" id="quantityInput" class="form-control" placeholder="100" required>
+                    <small id="minMaxText" class="text-muted"></small>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Average time:</label>
+                    <input type="text" id="avgTime" class="form-control bg-light" readonly value="9 minutes">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Charge:</label>
+                    <input type="text" id="chargeOutput" class="form-control bg-light fw-bold text-success" readonly placeholder="$0.00">
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold fs-5">Submit</button>
+            </form>
+        </div>
+
+        <!-- Add Funds Section (ABA PayWay Integration) -->
+        <div class="panel-card" id="addFundsSection">
+            <h5 class="text-success fw-bold mb-3"><i class="fa-solid fa-wallet"></i> បញ្ចូលទឹកប្រាក់ (Add Funds via ABA PayWay)</h5>
+            <p class="text-muted small">ស្កេន ឬចុចប៊ូតុងខាងក្រោមដើម្បីទូទាត់ប្រាក់ស្វ័យប្រវត្តិតាមរយៈ ABA PayWay របស់អ្នក៖</p>
+            
+            <div class="text-center my-3">
+                <a href="https://link.payway.com.kh/ABAPAYuN526009h" target="_blank" class="btn btn-primary btn-lg w-100 py-3 fw-bold shadow-sm" style="background-color: #0080ff;">
+                    <i class="fa-solid fa-qrcode me-2"></i> បង់ប្រាក់តាម ABA PayWay ឥឡូវនេះ
+                </a>
+            </div>
+            <div class="alert alert-warning small mb-0">
+                ⚠️ បន្ទាប់ពីបង់ប្រាក់រួច ប្រព័ន្ធនឹងបញ្ចូលសមតុល្យចូលគណនី SmeyLovbot របស់អ្នកដោយស្វ័យប្រវត្តិ។
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating Chat Support -->
+    <div class="chat-float" onclick="alert('Telegram Support: @SmeyLovbot')">
+        <i class="fa-solid fa-headset"></i>
+    </div>
+
+    <!-- Script to Load Services from khmer-smm.com API -->
+    <script>
+        let servicesData = [];
+
+        async function loadServices() {
+            try {
+                let res = await fetch('get_services.php');
+                let data = await res.json();
+                if(Array.isArray(data)) {
+                    servicesData = data;
+                    let categories = [...new Set(data.map(s => s.category))];
+                    let catSelect = document.getElementById('categorySelect');
+                    
+                    categories.forEach(cat => {
+                        let opt = document.createElement('option');
+                        opt.value = cat;
+                        opt.textContent = cat;
+                        catSelect.appendChild(opt);
+                    });
+                }
+            } catch (err) {
+                console.error("API Load Error:", err);
+            }
+        }
+
+        document.getElementById('categorySelect').addEventListener('change', function() {
+            let cat = this.value;
+            let sSelect = document.getElementById('serviceSelect');
+            sSelect.innerHTML = '<option value="">-- Select Service --</option>';
+            
+            let filtered = servicesData.filter(s => s.category === cat);
+            filtered.forEach(s => {
+                let opt = document.createElement('option');
+                opt.value = s.service;
+                opt.textContent = `[${s.service}] ${s.name} ($${s.rate}/1k)`;
+                opt.dataset.rate = s.rate;
+                opt.dataset.min = s.min;
+                opt.dataset.max = s.max;
+                sSelect.appendChild(opt);
+            });
+        });
+
+        document.getElementById('serviceSelect').addEventListener('change', function() {
+            let opt = this.options[this.selectedIndex];
+            if(opt.value) {
+                document.getElementById('minMaxText.textContent = `Min: ${opt.dataset.min} - Max: ${opt.dataset.max}`;
+                calcTotal();
+            }
+        });
+
+        document.getElementById('quantityInput').addEventListener('input', calcTotal);
+
+        function calcTotal() {
+            let sSelect = document.getElementById('serviceSelect');
+            let opt = sSelect.options[sSelect.selectedIndex];
+            let qty = document.getElementById('quantityInput').value;
+            if(opt && opt.dataset.rate && qty) {
+                let total = (parseFloat(opt.dataset.rate) * qty) / 1000;
+                document.getElementById('chargeOutput').value = '$' + total.toFixed(4);
+            }
+        }
+
+        loadServices();
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
