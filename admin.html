@@ -19,7 +19,7 @@
         <!-- ផ្ទាំង Login សម្ងាត់សម្រាប់ Admin -->
         <div id="loginSection" class="admin-card text-center">
             <h3 class="text-primary fw-bold mb-3"><i class="fa-solid fa-lock"></i> Admin Login</h3>
-            <p class="text-muted small">សូមបញ្ចូលពាក្យសម្ងាត់ដើម្បីគ្រប់គ្រងសេវាកម្ម SmeyLovbot៖</p>
+            <p class="text-muted small">សូមបញ្ចូលពាក្យសម្ងាត់ដើម្បីបន្ថែមសេវាកម្ម៖</p>
             <div class="mb-3">
                 <input type="password" id="adminPass" class="form-control text-center" placeholder="Password...">
             </div>
@@ -27,37 +27,42 @@
             <a href="index.html" class="d-block mt-3 small text-decoration-none">← ត្រឡប់ទៅទំព័រដើមវិញ</a>
         </div>
 
-        <!-- ផ្ទាំងគ្រប់គ្រងសេវាកម្ម (លាក់ទុករហូតដល់ឡុកអ៊ីនត្រូវ) -->
+        <!-- ផ្ទាំងគ្រប់គ្រងសេវាកម្ម -->
         <div id="dashboardSection" class="admin-card" style="display: none;">
             <div class="d-flex justify-content-between align-items: center mb-4">
-                <h4 class="text-success fw-bold mb-0"><i class="fa-solid fa-gears"></i> គ្រប់គ្រងសេវាកម្ម SMM</h4>
+                <h4 class="text-success fw-bold mb-0"><i class="fa-solid fa-gears"></i> បន្ថែមសេវាកម្ម SMM</h4>
                 <button class="btn btn-sm btn-outline-danger" onclick="logoutAdmin()">ចាកចេញ</button>
             </div>
 
             <form id="addServiceForm" class="mb-4">
                 <div class="mb-2">
-                    <label class="form-label small fw-bold">ឈ្មោះ Category (ឧ. Facebook - Followers):</label>
-                    <input type="text" id="admCategory" class="form-control" required placeholder="Facebook - Followers">
+                    <label class="form-label small fw-bold">ជ្រើសរើសប្រភេទ (Category):</label>
+                    <select id="admCategory" class="form-select" required>
+                        <option value="Facebook - Followers">Facebook - Followers</option>
+                        <option value="TikTok - Like">TikTok - Like & Views</option>
+                        <option value="Telegram - Post Views">Telegram - Post Views</option>
+                        <option value="YouTube - Views">YouTube - Views</option>
+                    </select>
                 </div>
                 <div class="mb-2">
                     <label class="form-label small fw-bold">ឈ្មោះសេវាកម្ម (Service Name):</label>
-                    <input type="text" id="admName" class="form-control" required placeholder="Page Followers - Real">
+                    <input type="text" id="admName" class="form-control" required placeholder="ឧ. Page Followers Real (1k/day)">
                 </div>
                 <div class="mb-2">
                     <label class="form-label small fw-bold">តម្លៃក្នុង ១០០០ ($ per 1k):</label>
-                    <input type="number" step="0.0001" id="admRate" class="form-control" required placeholder="0.2139">
+                    <input type="number" step="0.0001" id="admRate" class="form-control" required placeholder="ឧ. 0.2139">
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label class="form-label small fw-bold">Min:</label>
+                        <label class="form-label small fw-bold">ចំនួនទាបបំផុត (Min):</label>
                         <input type="number" id="admMin" class="form-control" value="10">
                     </div>
                     <div class="col">
-                        <label class="form-label small fw-bold">Max:</label>
+                        <label class="form-label small fw-bold">ចំនួនខ្ពស់បំផុត (Max):</label>
                         <input type="number" id="admMax" class="form-control" value="1000000">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success w-100 fw-bold"><i class="fa-solid fa-plus"></i> បន្ថែមសេវាកម្មចូលវេបសាយ</button>
+                <button type="submit" class="btn btn-success w-100 fw-bold"><i class="fa-solid fa-plus"></i> រក្សាទុកសេវាកម្ម</button>
             </form>
 
             <h6 class="fw-bold text-secondary">បញ្ជីសេវាកម្មដែលមានស្រាប់៖</h6>
@@ -68,7 +73,7 @@
     </div>
 
     <script>
-        // 🔑 កំណត់លេខសម្ងាត់ Admin របស់អ្នកនៅទីនេះ
+        // 🔑 លេខសម្ងាត់ Admin (អ្នកអាចកែសម្រួលតាមចិត្ត)
         const ADMIN_PASSWORD = "admin123";
 
         function loginAdmin() {
@@ -77,7 +82,7 @@
                 localStorage.setItem('admin_logged', 'true');
                 showDashboard();
             } else {
-                alert('លេខសម្ងាត់មិនត្រូវគ្នាទេ!');
+                alert('លេខសម្ងាត់ខុស!');
             }
         }
 
@@ -121,7 +126,7 @@
                 return;
             }
             servicesData.forEach((s, index) => {
-                list.innerHTML += `<div class="list-group-item d-flex justify-content-between align-items-center">
+                list.innerHTML += `<div class="list-group-item d-flex justify-content-between align-items:center">
                     <span>[${s.id}] ${s.name} ($${s.rate})</span>
                     <button class="btn btn-sm btn-danger py-0" onclick="deleteService(${index})"><i class="fa-solid fa-trash"></i></button>
                 </div>`;
