@@ -226,15 +226,24 @@
         <i class="fa-solid fa-headset"></i>
     </div>
 
-    <!-- JavaScript to Fetch Services via PHP Backend -->
+    <!-- JavaScript to Fetch API Directly via CORS Proxy for GitHub Pages -->
     <script>
         let servicesData = [];
+        const apiKey = "c25e94d3af8c3be1ead33e2865929005";
+        const apiUrl = "https://khmer-smm.com/api/v2";
 
         async function loadServices() {
             try {
-                let res = await fetch('get_services.php');
-                let data = await res.json();
+                let formData = new URLSearchParams();
+                formData.append('key', apiKey);
+                formData.append('action', 'services');
+
+                let res = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(apiUrl), {
+                    method: 'POST',
+                    body: formData
+                });
                 
+                let data = await res.json();
                 if(Array.isArray(data)) {
                     servicesData = data;
                     let categories = [...new Set(data.map(s => s.category))];
